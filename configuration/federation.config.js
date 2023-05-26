@@ -17,7 +17,8 @@ federationConfig = {
   filename: "remoteEntry.js",
   remotes: {},
   exposes: {
-    "./HelloWidget": "./src/components/HelloWidget/HelloWidget.tsx"
+    "./HelloWidget": "./src/components/HelloWidget/HelloWidget.tsx",
+    "./Coupled": "./src/components/Coupled/Coupled.tsx"
   },
   shared: {
     "react": {
