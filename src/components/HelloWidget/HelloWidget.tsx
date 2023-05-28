@@ -4,15 +4,17 @@ import { withErrorBoundary } from 'react-error-boundary'
 
 import "./HelloWidget.scss"
 import { Notes } from '../Notes/Notes'
+import { createBrowserRouter } from 'react-router-dom'
 export interface HelloWidgetProps {
     sayHello: string
 }
 
 const HelloWidget = withErrorBoundary((props: HelloWidgetProps) => {
-
+    
     return (
         <Box className="HelloWidget" data-package-id="starter">
-            <Typography variant="h1">Hello {props.sayHello}</Typography>
+            <Typography variant="h3">Hello {props.sayHello}</Typography>
+            <Typography variant="body1">This widget is hosted on {origin}</Typography>
             <Notes userId={props.sayHello} />
         </Box>
     )

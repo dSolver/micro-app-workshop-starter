@@ -17,69 +17,62 @@ federationConfig = {
   filename: "remoteEntry.js",
   remotes: {},
   exposes: {
+    "./externalRoutes": "./src/externalRoutes.tsx",
     "./HelloWidget": "./src/components/HelloWidget/HelloWidget.tsx",
     "./Coupled": "./src/components/Coupled/Coupled.tsx"
   },
   shared: {
     "react": {
-      "requiredVersion": "18.2",
+      "requiredVersion": "^18.2",
       "singleton": true,
-      "eager": true
     },
     "react-dom": {
-      "requiredVersion": "18.2",
+      "requiredVersion": "^18.2",
       "singleton": true,
-      "eager": true
     },
     "@mui/material": {
-      "requiredVersion": "5.11.10",
+      "requiredVersion": "^5.11.10",
       "singleton": true,
-      "eager": true
     },
     "@emotion/react": {
-      "requiredVersion": "11.10.6",
+      "requiredVersion": "^11.10.6",
       "singleton": true,
-      "eager": true
     },
     "@emotion/styled": {
-      "requiredVersion": "11.10.6",
+      "requiredVersion": "^11.10.6",
       "singleton": true,
-      "eager": true
     },
     "lodash": {
       "requiredVersion": "^4.17.21",
       "singleton": true,
-      "eager": true
     },
     "axios": {
       "requiredVersion": "^1.3.4",
       "singleton": true,
-      "eager": true
     },
     "dompurify": {
       "requiredVersion": "^3.0.3",
       "singleton": true,
-      "eager": true
     },
     "marked": {
       "requiredVersion": "^5.0.2",
       "singleton": true,
-      "eager": true
     },
     "rxjs": {
       "requiredVersion": "^7.8.1",
       "singleton": true,
-      "eager": true
     },
     "socket.io": {
       "requiredVersion": "^4.6.1",
       "singleton": true,
-      "eager": true
     },
     "socket.io-client": {
       "requiredVersion": "^4.6.1",
       "singleton": true,
-      "eager": true
+    },
+    "react-router-dom": {
+      "requiredVersion": "^6.11.2",
+      "singleton": true,
     }
   }
 }

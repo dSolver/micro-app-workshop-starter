@@ -1,24 +1,29 @@
 /**
  * Typically your App.tsx is not exposed to the host, but it is a good way to test your widget in isolation.
  */
-
+import React from 'react';
 import './App.scss';
 
-import { Box, Stack } from '@mui/material';
-
+import { Box, Stack, Typography } from '@mui/material';
+import {
+    createBrowserRouter,
+    Outlet,
+    RouteObject,
+    RouterProvider,
+} from "react-router-dom";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import HelloWidget from './components/HelloWidget/HelloWidget';
+import routes from './routes';
+
+const router = createBrowserRouter(routes)
 
 function App() {
     return (
         <Box className="App">
-            <Stack direction={'row'} gap={2} height={"100%"}>
-                <HelloWidget sayHello='stranger' />
-            </Stack>
+            <RouterProvider router={router} />
         </Box>
     );
 }
