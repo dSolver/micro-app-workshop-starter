@@ -7,6 +7,7 @@ import './App.scss';
 import { Box, Stack, Typography } from '@mui/material';
 import {
     createBrowserRouter,
+    createHashRouter,
     Outlet,
     RouteObject,
     RouterProvider,
@@ -18,7 +19,7 @@ import '@fontsource/roboto/700.css';
 
 import routes from './routes';
 
-const router = createBrowserRouter(routes)
+const router = createHashRouter(routes)
 
 function App() {
     return (

@@ -52,7 +52,7 @@ const config = {
       }
     ]
   },
-  
+
   optimization: {
     splitChunks: {
       chunks: 'async',

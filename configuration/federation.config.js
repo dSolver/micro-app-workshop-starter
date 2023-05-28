@@ -6,16 +6,29 @@ const path = require("path")
 const stage = process.env.BUILD_STAGE ?? "beta"
 
 const remoteUrls = {
-  "local": {},
-  "beta": {},
-  "gamma": {},
-  "prod": {}
+  "local": {
+    "Shared": "http://localhost:4002/remoteEntry.js"
+  },
+  "beta": {
+    "Shared": "http://localhost:4002/remoteEntry.js"
+  },
+  "gamma": {
+    "Shared": "http://localhost:4002/remoteEntry.js"
+  },
+  "prod": {
+    "Shared": "http://localhost:4002/remoteEntry.js"
+  }
 }
+
+
+// TODO: add the remoteUrls to the remotes section
 
 federationConfig = {
   name: "starter",
   filename: "remoteEntry.js",
-  remotes: {},
+  remotes: {
+    "Shared": dynamicRemote("Shared", remoteUrls[stage]["Shared"])
+  },
   exposes: {
     "./externalRoutes": "./src/externalRoutes.tsx",
     "./HelloWidget": "./src/components/HelloWidget/HelloWidget.tsx",
@@ -111,3 +124,40 @@ Object.keys(federationConfig.exposes).forEach((k) => {
 })
 
 exports.federationConfig = federationConfig;
+
+
+function dynamicRemote(name, useUrlParams) {
+  const remoteUrl = useUrlParams ? `const urlParams = new URLSearchParams(window.location.search)
+  const override = urlParams.get("${name}")
+  // This part depends on how you plan on hosting and versioning your federated modules
+  const remoteUrl = override || '${remoteUrls[stage][name]}'` : `const remoteUrl = '${remoteUrls[stage][name]}'`
+
+  return `promise new Promise((resolve, reject) => {
+    ${remoteUrl}
+    const script = document.createElement('script')
+    script.src = remoteUrl
+    script.onload = () => {
+      // the injected script has loaded and is available on window
+      // we can now resolve this Promise
+      const proxy = {
+        get: (request) => window['${name}'].get(request),
+        init: (arg) => {
+          try {
+            return window['${name}'].init(arg)
+          } catch(e) {
+            console.log('remote container already initialized')
+          }
+        }
+      }
+      resolve(proxy)
+    }
+    script.onerror = (e) => {
+        // the injected script errored during loading
+        console.error(\`error loading remote entry ${name} \`)
+        reject(e)
+    }
+    // inject this script with the src set to the remote remoteEntry.js
+    document.head.appendChild(script);
+  })
+  `
+}

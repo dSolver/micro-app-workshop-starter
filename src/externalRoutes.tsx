@@ -3,23 +3,22 @@
  * 
  * Note: We need to specify the path to the widget by what webpack's mapping is.
  * 
+ * Question: Since UserPage was not directly exposed via module federation, will the routing work?
  * 
+ * Question 2: Will UserPage be available remotely without routing?
  */
 import React from 'react';
 import { Stack, Typography } from "@mui/material"
 import { Outlet, RouteObject } from "react-router-dom"
-import { remoteWidget } from './remoteWidget';
 import { UserPage } from './components/UserPage/UserPage';
-
+import HelloWidget from './components/HelloWidget/HelloWidget';
 
 export default [
     {
         path: "/starter",
         element: (
             <Stack direction={'column'} padding={2} gap={2} height={"100%"}>
-                {
-                    remoteWidget('./components/HelloWidget/HelloWidget.tsx', { sayHello: 'stranger' })
-                }
+                <HelloWidget sayHello='stranger' />
                 <Outlet />
             </Stack>),
         children: [
