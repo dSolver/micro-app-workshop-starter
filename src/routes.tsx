@@ -6,7 +6,7 @@ import { UserPage } from './components/UserPage/UserPage';
 
 export default [
     {
-        path: "/starter",
+        path: "/",
         element: (
             <Stack direction={'column'} padding={2} gap={2} height={"100%"}>
                 <HelloWidget sayHello='stranger' />
