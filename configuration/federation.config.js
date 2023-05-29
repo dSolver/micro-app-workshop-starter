@@ -7,16 +7,16 @@ const stage = process.env.BUILD_STAGE ?? "beta"
 
 const remoteUrls = {
   "local": {
-    "Shared": "http://localhost:4002/remoteEntry.js"
+    "Shared": "http://daccheng-1-click.aka.corp.amazon.com:4002/remoteEntry.js"
   },
   "beta": {
-    "Shared": "http://localhost:4002/remoteEntry.js"
+    "Shared": "http://daccheng-1-click.aka.corp.amazon.com:4002/remoteEntry.js"
   },
   "gamma": {
-    "Shared": "http://localhost:4002/remoteEntry.js"
+    "Shared": "http://daccheng-1-click.aka.corp.amazon.com:4002/remoteEntry.js"
   },
   "prod": {
-    "Shared": "http://localhost:4002/remoteEntry.js"
+    "Shared": "http://daccheng-1-click.aka.corp.amazon.com:4002/remoteEntry.js"
   }
 }
 
