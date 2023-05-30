@@ -15,11 +15,10 @@ import HelloWidget from './components/HelloWidget/HelloWidget';
 
 export default [
     {
-        path: "/starter",
+        path: "/starter", // please change this to your alias
         element: (
             <Stack direction={'column'} padding={2} gap={2} height={"100%"}>
                 <HelloWidget sayHello='stranger' />
-                <Outlet />
             </Stack>),
         children: [
             {
@@ -29,7 +28,7 @@ export default [
         ]
     },
     {
-        path: "/starter/:userId",
+        path: "/starter/:userId", // please change this to your alias
         element: (
             <UserPage />
         )
