@@ -139,6 +139,9 @@ function dynamicRemote(name, useUrlParams) {
     script.onload = () => {
       // the injected script has loaded and is available on window
       // we can now resolve this Promise
+      if(!window['${name}']) {
+        reject('remote container not found')
+      }
       const proxy = {
         get: (request) => window['${name}'].get(request),
         init: (arg) => {

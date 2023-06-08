@@ -85,6 +85,8 @@ const config = {
     host: configUtil.devHost,
     allowedHosts: "all",
     historyApiFallback: true,
+    hot: false, // disabling hot and client so that live reload does not happen, this interrupts host application if it is on a different ip address
+    client: false,
     headers: {
       "Access-Control-Allow-Origin": "*",
     }
